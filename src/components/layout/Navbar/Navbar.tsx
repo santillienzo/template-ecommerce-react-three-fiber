@@ -9,20 +9,17 @@ const Navbar = () => {
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(true)
 
     const toggleMenu = ()=> setMenuIsOpen(!menuIsOpen)
-
   return (
     <header className={style.container}>
-        <div className={style.menu_icon_container}>
-            <div className={style.menu_icon} onClick={toggleMenu}>
-                {
-                    menuIsOpen ?
-                    <img src={menu_restaurante} alt="" />
-                    :
-                    <img src={menu} alt=""/>
-                }
-            </div>
+        <div className={style.menu_icon} onClick={toggleMenu}>
+            {
+                menuIsOpen ?
+                <img src={menu_restaurante} alt="" />
+                :
+                <img src={menu} alt=""/>
+            }
         </div>
-        <nav className={`${style.nav} animate__animated animate__slideInDown`}>
+        <nav className={`${style.nav} animate__animated ${menuIsOpen ? 'animate__slideInDown' : 'animate__slideOutUp'}`}>
             <h1 className={style.logo}>Logo</h1>
             <div className={style.categories_container}>
                 <ul>
