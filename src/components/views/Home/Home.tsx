@@ -33,7 +33,10 @@ const products = [
 const Home = () => {
   return (
       <section className={style.wrapper}>
-        <Swiper navigation={true} modules={[Navigation]} className={style.swipper}>
+        <div className={style.category_name_container}>
+          <h2>Categoría</h2>
+        </div>
+        <Swiper loop={true} navigation={true} modules={[Navigation]} className={style.swipper}>
           {
             products.map((product, index)=>(
               <SwiperSlide key={index}><ProductCard product={product}/></SwiperSlide>
