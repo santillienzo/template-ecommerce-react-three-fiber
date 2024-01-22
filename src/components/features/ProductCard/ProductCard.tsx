@@ -1,11 +1,5 @@
+import { Product } from '../../../types/Product'
 import style from './Product.module.css'
-
-type Product = {
-    name: string;
-    image:string;
-    description: string;
-    price: string;
-}
 
 type Props = {
     product: Product
