@@ -1,8 +1,8 @@
 import { Category } from "../types/Product";
+import config from "../utils/config";
+const {backendUri} = config
 
-
-// const BASE_URL = 'https://template-food-ecommerce-backend.onrender.com/categories';
-const BASE_URL = 'http://localhost:3000/categories';
+const BASE_URL = `${backendUri}/categories`;
 
 export const CategoryService = {
   

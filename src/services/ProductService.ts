@@ -1,8 +1,9 @@
 import { Product } from "../types/Product";
+import config from "../utils/config";
+const {backendUri} = config
 
 
-// const BASE_URL = 'https://template-food-ecommerce-backend.onrender.com/products';
-const BASE_URL = 'http://localhost:3000/products';
+const BASE_URL = `${backendUri}/products`;
 
 export const ProductService = {
   
