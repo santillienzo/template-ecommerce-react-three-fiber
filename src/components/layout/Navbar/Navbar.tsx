@@ -1,14 +1,24 @@
 import style from './Navbar.module.css'
 import menu_restaurante from '../../../assets/menu-icons/restaurante_menu.svg'
 import menu from '../../../assets/menu-icons/menu.svg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { ICategoryContext } from '../../../types/Providers'
+import CategoryContext from '../../providers/CategoryProvider'
+import { Category } from '../../../types/Product'
 
 
 
 const Navbar = () => {
+    const {setSelectedCategory, categories} = useContext<ICategoryContext>(CategoryContext)
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(true)
 
+
     const toggleMenu = ()=> setMenuIsOpen(!menuIsOpen)
+    
+    const handleCategory = (category:Category)=>{
+        setSelectedCategory(category)
+        toggleMenu()
+    }
   return (
     <header className={style.container}>
         <div className={style.menu_icon} onClick={toggleMenu}>
@@ -23,10 +33,11 @@ const Navbar = () => {
             <h1 className={style.logo}>Logo</h1>
             <div className={style.categories_container}>
                 <ul>
-                    <li><span>Categoría 1</span></li>
-                    <li><span>Categoría 2</span></li>
-                    <li><span>Categoría 3</span></li>
-                    <li><span>Categoría 4</span></li>
+                    {
+                        categories.map((category, index)=>(
+                            <li key={index} onClick={()=> handleCategory(category)}><span>{category.beautifulName}</span></li>
+                        ))
+                    }
                 </ul>
             </div>
         </nav>
